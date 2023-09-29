@@ -8,8 +8,12 @@ use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            return view('ajax_application', ['objects' => []]);
+        }
+
         $objects = Application::query()->with('categories')->whereHas('categories', function ($query) {
             $query->where('slug', '=', 'platnie');
             $query->orWhere('slug', '=', 'ios');
@@ -38,7 +42,6 @@ class ApplicationController extends Controller
                 }
             });
         })->get();
-
 
         return view('ajax_application', ['objects' => $objects]);
     }
