@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Назвал так потому, что php будет ругаться на 'Object';
+ */
 class Application extends Model
 {
     use HasFactory;

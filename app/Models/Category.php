@@ -12,7 +12,7 @@ class Category extends Model
     protected $table = 'categories';
     protected $fillable = ['title'];
 
-    public function objectss()
+    public function getObject()
     {
         return $this->belongsToMany(Application::class, 'object_category', 'category_id', 'object_id');
     }
